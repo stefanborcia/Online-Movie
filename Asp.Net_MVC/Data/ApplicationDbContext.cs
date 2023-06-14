@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Asp.Net_MVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Asp.Net_MVC.Data
 {
@@ -8,5 +9,7 @@ namespace Asp.Net_MVC.Data
         {
 
         }
+
+        public DbSet<Category> Categories { get; set; }
     }
 }
