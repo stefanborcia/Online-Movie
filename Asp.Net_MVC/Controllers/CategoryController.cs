@@ -11,7 +11,7 @@ namespace Asp.Net_MVC.Controllers
         {
             _db = db;
         }
-        [Route("Categories")] 
+        [Route("Categories")]
         public IActionResult Index()
         {
             List<Category> objCategoryList= _db.Categories.ToList();
@@ -54,7 +54,7 @@ namespace Asp.Net_MVC.Controllers
             return View(categoryFromDb);
         }
         [HttpPost]
-        public IActionResult Delete(Category obj)
+        public IActionResult Edit(Category obj)
         {
             if(ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace Asp.Net_MVC.Controllers
 
             if (categoryFromDb == null)
             {
-                return NotFound();
+                return NotFound(); 
             }
             return View(categoryFromDb);
         }
