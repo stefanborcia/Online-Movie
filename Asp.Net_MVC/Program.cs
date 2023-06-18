@@ -1,4 +1,4 @@
-using Asp.Net_MVC.Data;
+using Movie_DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

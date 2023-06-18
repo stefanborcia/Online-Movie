@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Asp.Net_MVC.Migrations
+namespace Movie_DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoryTableToDB : Migration

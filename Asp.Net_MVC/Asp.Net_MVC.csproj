@@ -16,4 +16,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.14" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Movie_DataAccess\Movie_DataAccess.csproj" />
+    <ProjectReference Include="..\Movie_Models\Movie_Models.csproj" />
+  </ItemGroup>
+
 </Project>

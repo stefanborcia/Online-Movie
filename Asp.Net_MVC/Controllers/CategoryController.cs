@@ -1,6 +1,6 @@
-﻿using Asp.Net_MVC.Data;
-using Asp.Net_MVC.Models;
+﻿using Asp.Net_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
+using Movie_DataAccess.Data;
 
 namespace Asp.Net_MVC.Controllers
 {

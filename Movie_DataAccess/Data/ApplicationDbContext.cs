@@ -1,7 +1,7 @@
 ﻿using Asp.Net_MVC.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Asp.Net_MVC.Data
+namespace Movie_DataAccess.Data
 {
     public class ApplicationDbContext :DbContext
     {
