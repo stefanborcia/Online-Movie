@@ -1,20 +1,21 @@
 ﻿using Asp.Net_MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using Movie_DataAccess.Data;
+using Movie_DataAccess.Repository.IRepository;
 
 namespace Asp.Net_MVC.Controllers
 {
     public class CategoryController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public CategoryController(ApplicationDbContext db)
+        private readonly ICategoryRepository _categoryRepository;
+        public CategoryController(ICategoryRepository db)
         {
-            _db = db;
+            _categoryRepository = db;
         }
         [Route("Categories")]
         public IActionResult Index()
         {
-            List<Category> objCategoryList= _db.Categories.ToList();
+            List<Category> objCategoryList= _categoryRepository.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -31,8 +32,8 @@ namespace Asp.Net_MVC.Controllers
             }
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(obj);
-                _db.SaveChanges();
+                _categoryRepository.Add(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index");
             }
@@ -45,7 +46,7 @@ namespace Asp.Net_MVC.Controllers
                 return NotFound();
             }
 
-            Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepository.Get(input=>input.CategoryId == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(input=>input.CategoryId==id);
             //Category? categoryFromDb2 = _db.Categories.Where(input=>input.CategoryId==id).FirstOrDefault();
             if (categoryFromDb == null)
@@ -59,8 +60,8 @@ namespace Asp.Net_MVC.Controllers
         {
             if(ModelState.IsValid)
             {
-                _db.Categories.Update(obj);
-                _db.SaveChanges();
+                _categoryRepository.Update(obj);
+                _categoryRepository.Save();
                 TempData["success"] = "Category updated successfully";
 
                 return RedirectToAction("Index");
@@ -74,7 +75,7 @@ namespace Asp.Net_MVC.Controllers
                 return NotFound();
             }
 
-            Category? categoryFromDb = _db.Categories.Find(id);
+            Category? categoryFromDb = _categoryRepository.Get(input => input.CategoryId == id);
 
             if (categoryFromDb == null)
             {
@@ -85,13 +86,13 @@ namespace Asp.Net_MVC.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Category? obj = _db.Categories.Find(id);
+            Category? obj = _categoryRepository.Get(input => input.CategoryId == id);
             if (obj == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(obj);
-            _db.SaveChanges();
+            _categoryRepository.Remove(obj);
+            _categoryRepository.Save();
             TempData["success"] = "Category deleted successfully";
 
             return RedirectToAction("Index");
