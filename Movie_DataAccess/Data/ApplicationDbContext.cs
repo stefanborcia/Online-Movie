@@ -1,5 +1,5 @@
-﻿using Asp.Net_MVC.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using Movie_Models;
 
 namespace Movie_DataAccess.Data
 {

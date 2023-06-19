@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Asp.Net_MVC.Models;
+using Movie_Models;
 
 namespace Movie_DataAccess.Repository.IRepository
 {

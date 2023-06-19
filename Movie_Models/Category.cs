@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Asp.Net_MVC.Models
+namespace Movie_Models
 {
     public class Category
     {
@@ -12,7 +12,7 @@ namespace Asp.Net_MVC.Models
         [DisplayName("Category Name")]
         public string Name { get; set; }
         [DisplayName("Display Order")]
-        [Range(1,100,ErrorMessage = "Display Order must be between 1-100")]
+        [Range(1, 100, ErrorMessage = "Display Order must be between 1-100")]
         public int DisplayOrder { get; set; }
     }
 }
