@@ -21,4 +21,8 @@
     <ProjectReference Include="..\Movie_Models\Movie_Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

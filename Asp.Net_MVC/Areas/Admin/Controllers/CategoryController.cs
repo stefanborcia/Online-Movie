@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Movie_DataAccess.Data;
 using Movie_DataAccess.Repository.IRepository;
 
-namespace Asp.Net_MVC.Controllers
+namespace Asp.Net_MVC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -15,7 +16,7 @@ namespace Asp.Net_MVC.Controllers
         [Route("Categories")]
         public IActionResult Index()
         {
-            List<Category> objCategoryList= _unitOfWork.Category.GetAll().ToList();
+            List<Category> objCategoryList = _unitOfWork.Category.GetAll().ToList();
             return View(objCategoryList);
         }
 
@@ -46,7 +47,7 @@ namespace Asp.Net_MVC.Controllers
                 return NotFound();
             }
 
-            Category? categoryFromDb = _unitOfWork.Category.Get(input=>input.CategoryId == id);
+            Category? categoryFromDb = _unitOfWork.Category.Get(input => input.CategoryId == id);
             //Category? categoryFromDb1 = _db.Categories.FirstOrDefault(input=>input.CategoryId==id);
             //Category? categoryFromDb2 = _db.Categories.Where(input=>input.CategoryId==id).FirstOrDefault();
             if (categoryFromDb == null)
@@ -58,7 +59,7 @@ namespace Asp.Net_MVC.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(obj);
                 _unitOfWork.Save();
@@ -79,7 +80,7 @@ namespace Asp.Net_MVC.Controllers
 
             if (categoryFromDb == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
             return View(categoryFromDb);
         }
