@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Movie_Models;
 
 namespace Movie_DataAccess.Repository.IRepository
 {
-    public interface IUnitOfWork
+    public interface ICategoryRepository : IRepository<Category>
     {
-
-        ICategoryRepository Category { get; }
-        IProductRepository Product { get; }
-
-        void Save();
+        void Update(Category obj);
     }
 }

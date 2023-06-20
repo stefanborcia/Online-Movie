@@ -13,13 +13,13 @@ namespace Movie_Models
         [Key]
         public int ProductId { get; set; }
         [Required]
-        public int Title{ get; set; }
+        public string Title{ get; set; }
         [Required]
 
-        public int Description{ get; set; }
+        public string Description{ get; set; }
         [Required]
 
-        public int Actors{ get; set; }
+        public string Actors{ get; set; }
         [Required]
         [Display(Name = "List Price")]
         [Range(1,1000)]

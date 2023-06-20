@@ -1,6 +1,6 @@
-﻿using Asp.Net_MVC.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Movie_Models;
 
 namespace Asp.Net_MVC.Areas.Customer.Controllers
 {
