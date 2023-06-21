@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Asp.Net_MVC</title>
+    <title>@ViewData["Title"] Online Movie </title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Asp.Net_MVC.styles.css" asp-append-version="true" />
@@ -36,7 +36,10 @@
                                 <li class="nav-item">
                                     <a class="dropdown-item  fw-bold" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
                                 </li>
-                                <li><hr class="dropdown-divider"></li>
+                                <li class="nav-item">
+                                    <a class="dropdown-item  fw-bold" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                </li>
+                                @*<li><hr class="dropdown-divider"></li>*@
                             </ul>
                         </li>
                     </ul>

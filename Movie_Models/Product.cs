@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,13 @@ namespace Movie_Models
         [Key]
         public int ProductId { get; set; }
         [Required]
-        public string Title{ get; set; }
+        public string? Title{ get; set; }
         [Required]
 
-        public string Description{ get; set; }
+        public string? Description{ get; set; }
         [Required]
 
-        public string Actors{ get; set; }
+        public string? Actors{ get; set; }
         [Required]
         [Display(Name = "List Price")]
         [Range(1,1000)]
@@ -31,7 +32,7 @@ namespace Movie_Models
         public double Price { get; set; }
 
         [Required]
-        [Display(Name = "3-5")]
+        [Display(Name = "Price for 3-5")]
         [Range(1, 1000)]
         public double Price3 { get; set; }
 
@@ -40,5 +41,8 @@ namespace Movie_Models
         [Range(1, 1000)]
         public double Price5 { get; set; }
 
+        public int CategoryId { get; set; }
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
     }
 }
