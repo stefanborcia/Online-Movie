@@ -11,7 +11,7 @@ namespace Movie_DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "CategoryId",
+                name: "CatId",
                 table: "Products",
                 type: "int",
                 nullable: false,
@@ -21,39 +21,39 @@ namespace Movie_DataAccess.Migrations
                 table: "Products",
                 keyColumn: "ProductId",
                 keyValue: 1,
-                column: "CategoryId",
-                value: 1);
+                column: "CatId",
+                value: 4);
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ProductId",
                 keyValue: 2,
-                column: "CategoryId",
-                value: 1);
+                column: "CatId",
+                value: 4);
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ProductId",
                 keyValue: 3,
-                column: "CategoryId",
-                value: 1);
+                column: "CatId",
+                value: 4);
 
             migrationBuilder.UpdateData(
                 table: "Products",
                 keyColumn: "ProductId",
                 keyValue: 4,
-                column: "CategoryId",
-                value: 1);
+                column: "CatId",
+                value: 4);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
+                name: "IX_Products_CatId",
                 table: "Products",
-                column: "CategoryId");
+                column: "CatId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Products_Categories_CategoryId",
+                name: "FK_Products_Categories_CatId",
                 table: "Products",
-                column: "CategoryId",
+                column: "CatId",
                 principalTable: "Categories",
                 principalColumn: "CategoryId",
                 onDelete: ReferentialAction.Cascade);
@@ -63,15 +63,15 @@ namespace Movie_DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Products_Categories_CategoryId",
+                name: "FK_Products_Categories_CatId",
                 table: "Products");
 
             migrationBuilder.DropIndex(
-                name: "IX_Products_CategoryId",
+                name: "IX_Products_CatId",
                 table: "Products");
 
             migrationBuilder.DropColumn(
-                name: "CategoryId",
+                name: "CatId",
                 table: "Products");
         }
     }

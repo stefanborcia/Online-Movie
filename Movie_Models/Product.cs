@@ -41,8 +41,8 @@ namespace Movie_Models
         [Range(1, 1000)]
         public double Price5 { get; set; }
 
-        public int CategoryId { get; set; }
-        [ForeignKey("CategoryId")]
+        public int CatId { get; set; }
+        [ForeignKey("CatId")]
         public Category Category { get; set; }
     }
 }

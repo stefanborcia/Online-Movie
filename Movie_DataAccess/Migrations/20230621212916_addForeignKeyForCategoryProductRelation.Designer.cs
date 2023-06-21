@@ -11,7 +11,7 @@ using Movie_DataAccess.Data;
 namespace Movie_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230621193035_addForeignKeyForCategoryProductRelation")]
+    [Migration("20230621212916_addForeignKeyForCategoryProductRelation")]
     partial class addForeignKeyForCategoryProductRelation
     {
         /// <inheritdoc />
@@ -89,7 +89,7 @@ namespace Movie_DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("CatId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -114,7 +114,7 @@ namespace Movie_DataAccess.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("CatId");
 
                     b.ToTable("Products");
 
@@ -123,7 +123,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 1,
                             Actors = "john wick",
-                            CategoryId = 1,
+                            CatId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ListPrice = 5.0,
                             Price = 8.0,
@@ -135,7 +135,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 2,
                             Actors = "john wick",
-                            CategoryId = 1,
+                            CatId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ListPrice = 5.0,
                             Price = 8.0,
@@ -147,7 +147,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 3,
                             Actors = "john wick",
-                            CategoryId = 1,
+                            CatId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ListPrice = 5.0,
                             Price = 8.0,
@@ -159,7 +159,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 4,
                             Actors = "john wick",
-                            CategoryId = 1,
+                            CatId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ListPrice = 5.0,
                             Price = 8.0,
@@ -173,7 +173,7 @@ namespace Movie_DataAccess.Migrations
                 {
                     b.HasOne("Movie_Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("CatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
