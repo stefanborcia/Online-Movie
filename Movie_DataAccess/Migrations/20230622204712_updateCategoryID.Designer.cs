@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Movie_DataAccess.Data;
 
@@ -10,9 +11,11 @@ using Movie_DataAccess.Data;
 namespace Movie_DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230622204712_updateCategoryID")]
+    partial class updateCategoryID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,7 +89,7 @@ namespace Movie_DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CatId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -115,7 +118,7 @@ namespace Movie_DataAccess.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CatId");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("Products");
 
@@ -124,7 +127,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 1,
                             Actors = "john wick",
-                            CatId = 4,
+                            CategoryId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ImageUrl = "",
                             ListPrice = 5.0,
@@ -137,7 +140,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 2,
                             Actors = "john wick",
-                            CatId = 4,
+                            CategoryId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ImageUrl = "",
                             ListPrice = 5.0,
@@ -150,7 +153,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 3,
                             Actors = "john wick",
-                            CatId = 4,
+                            CategoryId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ImageUrl = "",
                             ListPrice = 5.0,
@@ -163,7 +166,7 @@ namespace Movie_DataAccess.Migrations
                         {
                             ProductId = 4,
                             Actors = "john wick",
-                            CatId = 4,
+                            CategoryId = 4,
                             Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
                             ImageUrl = "",
                             ListPrice = 5.0,
@@ -178,7 +181,7 @@ namespace Movie_DataAccess.Migrations
                 {
                     b.HasOne("Movie_Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CatId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

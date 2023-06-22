@@ -34,7 +34,8 @@ namespace Movie_DataAccess.Data
                     Price = 8,
                     Price3 = 10,
                     Price5 = 15,
-                    CatId = 4
+                    CatId = 4,
+                    ImageUrl = ""
                 },
             new Product
             {
@@ -46,7 +47,8 @@ namespace Movie_DataAccess.Data
                 Price = 8,
                 Price3 = 10,
                 Price5 = 15,
-                CatId = 4
+                CatId = 4,
+                ImageUrl = ""
             },
                 new Product
                 {
@@ -58,7 +60,8 @@ namespace Movie_DataAccess.Data
                     Price = 8,
                     Price3 = 10,
                     Price5 = 15,
-                    CatId = 4
+                    CatId = 4,
+                    ImageUrl = ""
                 },
                 new Product
                 {
@@ -70,7 +73,8 @@ namespace Movie_DataAccess.Data
                     Price = 8,
                     Price3 = 10,
                     Price5 = 15,
-                    CatId = 4
+                    CatId = 4,
+                    ImageUrl = ""
                 }
             );
         }
