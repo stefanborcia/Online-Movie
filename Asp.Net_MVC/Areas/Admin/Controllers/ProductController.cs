@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Movie_DataAccess.Data;
 using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
+using Movie_Models.ViewModels;
 
 namespace Asp.Net_MVC.Areas.Admin.Controllers
 {
@@ -32,8 +33,13 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
 
             //ViewBag.CategoryList = CategoryList;
             ViewData["CategoryList"] = CategoryList;
+            ProductVM productVM = new()
+            {
+                CategoryList = CategoryList,
+                Product = new Product()
+            };
 
-            return View();
+            return View(productVM);
         }
         [HttpPost]
         public IActionResult Create(Product obj)
