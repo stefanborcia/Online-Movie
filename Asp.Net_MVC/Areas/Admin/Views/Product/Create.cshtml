@@ -49,7 +49,7 @@
                     <span span asp-validation-for="Price5" class="text-danger"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <select asp-for="CatId" asp-item="@(ViewData["CategoryList"] as IEnumerable<SelectListItem>)" class="form-select border-0 shadow">
+                    <select asp-for="CatId" asp-items="@(ViewData["CategoryList"] as IEnumerable<SelectListItem>)" class="form-select border-0 shadow">
                         <option disabled selected>Select Category</option>
                     </select>
                     <label asp-for="CatId" class="ms-1 mt-1"></label>
