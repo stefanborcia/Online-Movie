@@ -55,6 +55,11 @@
                     <label asp-for="Product.CatId" class="ms-1 mt-1"></label>
                     <span span asp-validation-for="Product.CatId" class="text-danger"></span>
                 </div>
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Product.ImageUrl" class="form-control border-0 shadow" />
+                    <label asp-for="Product.ImageUrl" class="ms-1 mt-1"></label>
+                    <span span asp-validation-for="Product.ImageUrl" class="text-danger"></span>
+                </div>
                 <div class="row">
                     <div class="col-6">
                         <button type="submit" class="btn btn-primary form-control">Create</button>

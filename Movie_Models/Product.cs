@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace Movie_Models
 {
@@ -43,7 +44,9 @@ namespace Movie_Models
 
         public int CatId { get; set; }
         [ForeignKey("CatId")]
+        [ValidateNever]
         public Category Category { get; set; }
+        [ValidateNever]
         public string ImageUrl { get; set; }
     }
 }
