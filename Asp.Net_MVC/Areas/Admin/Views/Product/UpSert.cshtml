@@ -5,46 +5,47 @@
     <div class="card-header bg-secondary bg-gradient py-1">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-primary">Create Product</h2>
+                <h2 class="text-primary">@(Model.Product.ProductId!=0? "Update": "Create") Product</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         <form method="post" class="row" enctype="multipart/form-data">
+            <input asp-for="Product.ProductId" hidden/>
             <div class="border p-3">
                 @*<div asp-validation-summary="ModelOnly"></div>*@
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Title" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Title" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Title" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Title" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Description" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Description" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Description" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Description" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Actors" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Actors" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Actors" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Actors" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.ListPrice" class="form-control border-0 shadow" />
+                    <input asp-for="Product.ListPrice" class="form-control border-0 shadow"/>
                     <label asp-for="Product.ListPrice" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.ListPrice" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Price" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Price" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Price" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Price" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Price3" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Price3" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Price3" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Price3" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input asp-for="Product.Price5" class="form-control border-0 shadow" />
+                    <input asp-for="Product.Price5" class="form-control border-0 shadow"/>
                     <label asp-for="Product.Price5" class="ms-1 mt-1"></label>
                     <span asp-validation-for="Product.Price5" class="text-warning"></span>
                 </div>
@@ -56,7 +57,7 @@
                     <span asp-validation-for="Product.CatId" class="text-warning"></span>
                 </div>
                 <div class="form-floating py-2 col-12">
-                    <input type="file" class="form-control border-0 shadow" />
+                    <input type="file" class="form-control border-0 shadow"/>
                     <label asp-for="Product.ImageUrl" class="ms-1 "></label>
                 </div>
                 <div class="row">
