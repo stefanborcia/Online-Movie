@@ -10,3 +10,5 @@ https://github.com/stefanborcia/Online-Movie/assets/98278002/aac3e69d-b398-4f50-
 
 
 ![update](https://github.com/stefanborcia/Online-Movie/assets/98278002/83717cb4-8adb-415c-88c6-02f2b764e792)
+</br>
+![delete](https://github.com/stefanborcia/Online-Movie/assets/98278002/ff5b2721-debf-4007-9f16-fd73b7982650)
