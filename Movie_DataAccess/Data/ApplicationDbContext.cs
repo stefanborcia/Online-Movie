@@ -27,9 +27,9 @@ namespace Movie_DataAccess.Data
                 new Product
                 {
                     ProductId = 1,
-                    Title = "John Wick 4",
-                    Actors = "john wick",
-                    Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
+                    Title = "Gridlocked",
+                    Actors = "Brody Walker",
+                    Description = "Former SWAT leader David Hendrix and hard-partying movie star Brody Walker must cut their ride-along short when a police training facility is attacked by a team of mercenaries.",
                     ListPrice = 5,
                     Price = 8,
                     Price3 = 10,
@@ -40,9 +40,9 @@ namespace Movie_DataAccess.Data
             new Product
             {
                 ProductId = 2,
-                Title = "John Wick 4",
-                Actors = "john wick",
-                Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
+                Title = "Security",
+                Actors = "Antonio Banderas",
+                Description = "A security guard protects an eleven year-old girl who is being targeted by a gang for participating as a trial witness.",
                 ListPrice = 5,
                 Price = 8,
                 Price3 = 10,
@@ -53,9 +53,9 @@ namespace Movie_DataAccess.Data
                 new Product
                 {
                     ProductId = 3,
-                    Title = "John Wick 4",
-                    Actors = "john wick",
-                    Description = "With the price on his head ever increasing, legendary hit man John Wick takes his fight against the High Table global as he seeks out the most powerful players in the underworld, from New York to Paris to Japan to Berlin.",
+                    Title = "Blacklight",
+                    Actors = "Liam Neeson",
+                    Description = "Travis Block is a government operative coming to terms with his shadowy past. When he discovers a plot targeting U.S. citizens, Block finds himself in the crosshairs of the FBI director he once helped protect.",
                     ListPrice = 5,
                     Price = 8,
                     Price3 = 10,
