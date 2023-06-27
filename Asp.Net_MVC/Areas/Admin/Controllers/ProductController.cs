@@ -21,15 +21,15 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
         //[Route("Categories")
         public IActionResult Index()
         {
-            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
-            
+            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+
             return View(objProductList);
         }
 
         public IActionResult UpSert(int? id)
         {
             ProductVM productVM = new()
-            { 
+            {
                 CategoryList = _unitOfWork.Category.GetAll().Select(u => new SelectListItem
                 {
                     Text = u.Name,
@@ -57,8 +57,8 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
                 string wwwRootPath = _webHostEnvironment.WebRootPath;
                 if (file != null)
                 {
-                    string fileName =Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath =Path.Combine(wwwRootPath, @"images\product");
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\product");
 
                     if (!string.IsNullOrEmpty(productVM.Product.ImageUrl))
                     {
@@ -70,7 +70,7 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
                         }
                     }
 
-                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName),FileMode.Create))
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                     {
                         file.CopyTo(fileStream);
                     }
@@ -86,7 +86,7 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
                 {
                     _unitOfWork.Product.Update(productVM.Product);
                 }
-                
+
                 _unitOfWork.Save();
                 TempData["success"] = "Product created successfully";
                 return RedirectToAction("Index");
@@ -108,7 +108,7 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            Product? productFromDb = _unitOfWork.Product.Get(input => input.ProductId == id);
+            Product? productFromDb = _unitOfWork.Product.Get(u => u.ProductId == id);
 
             if (productFromDb == null)
             {
@@ -119,7 +119,7 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Product? obj = _unitOfWork.Product.Get(input => input.ProductId == id);
+            Product? obj = _unitOfWork.Product.Get(u => u.ProductId == id);
             if (obj == null)
             {
                 return NotFound();
@@ -130,5 +130,16 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
+
+        #region API CALLS
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            List<Product> objProductList = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+            return Json(new { data = objProductList });
+        }
+
+        #endregion
     }
 }
