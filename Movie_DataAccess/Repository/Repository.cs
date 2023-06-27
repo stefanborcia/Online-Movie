@@ -17,22 +17,37 @@ namespace Movie_DataAccess.Repository
         {
             _db = db;
             this.dbSet = _db.Set<C>();  //_db.Categories == dbSet
+            _db.Products.Include(u => u.Category).Include(u =>u.CatId);
         }
         public void Add(C entity)
         {
             dbSet.Add(entity);
         }
 
-        public C Get(System.Linq.Expressions.Expression<Func<C, bool>> filter)
+        public C Get(System.Linq.Expressions.Expression<Func<C, bool>> filter, string? includeProperties = null)
         {
             IQueryable<C> query = dbSet;
             query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<C> GetAll()
+        public IEnumerable<C> GetAll(string? includeProperties = null)
         {
             IQueryable<C> query = dbSet;
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var includeProp in includeProperties.Split(new char[]{ ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProp);
+                }
+            }
             return query.ToList();
         }
 
