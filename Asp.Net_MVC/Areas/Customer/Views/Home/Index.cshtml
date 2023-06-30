@@ -1,8 +1,9 @@
-﻿@model IEnumerable<Product>
+﻿@using System.Globalization
+@model IEnumerable<Product>
 <div class="container">
     <div class="row shadow rounded ">
         <div id="carouselExampleControls" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div  class="carousel slide h-100 pt-1 pb-1" data-bs-ride="carousel">
+            <div class="carousel slide h-100 pt-1 pb-1" data-bs-ride="carousel">
                 <div class="carousel-inner h-100 w-100 mt-4">
                     <div class="carousel-item active h-100">
                         <img src="/images/carousel/ksaDjd.jpg" class="d-block w-100">
@@ -40,13 +41,23 @@
                         <div class="row p-2">
                             <div class="col-12 p-1 h-75">
                                 <div class="card border-0 p-3 shadow border-top border-5 rounded ">
-                                    <img src="@product.ImageUrl" class="card-img-top rounded"/>
+                                    <img src="@product.ImageUrl" class="card-img-top rounded" />
                                     <div class="card-body pb-0">
                                         <div class="pl-1">
                                             <p class="card-title h6 text-dark text-uppercase text-center">@product.Title</p>
                                             <p class="card-title text-warning text-center">@product.Actors</p>
                                         </div>
-                                        
+                                        <div class="pl-1">
+                                            <p class="text-dark fw-bold text-opacity-75 text-center">
+                                                Price:
+                                                <span>@product.ListPrice.ToString("C", new CultureInfo("fr-FR"))</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <a asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-primary bg-gradient border-0 form-control">
+                                        Details
+                                        </a>
                                     </div>
                                 </div>
                             </div>
