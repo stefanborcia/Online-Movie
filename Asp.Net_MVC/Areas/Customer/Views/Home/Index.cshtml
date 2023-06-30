@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-@model IEnumerable<Product>
+﻿@model IEnumerable<Product>
 <div class="container">
     <div class="row shadow rounded ">
         <div id="carouselExampleControls" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -36,32 +33,6 @@
     </div>
     <div class="row">
         <div class="col-12 mb-6">
-            @*<div id="todaySpecial" class="row">
-                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <div class="card dishCard">
-                        <img class="card-img-top h-100" src="/images/under_carousel/the-makers-of-kgf-1-film-to-be-released-on-28th-september-2023-001.jpg"/>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title fw-bold pt-1">Rebelling Worldwide (2023)</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <div class="card dishCard">
-                        <img class="card-img-top h-100" src="/images/under_carousel/Fast-X-785x515.jpg"/>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title fw-bold pt-1">Fast X (2023)</p>
-                    </div>
-                </div>
-                <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                    <div class="card dishCard">
-                        <img class="card-img-top h-100" src="/images/under_carousel/GlassFINALE-e1544552961805.jpg"/>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title fw-bold pt-1">Glass (2023)</p>
-                    </div>
-                </div>
-            </div>*@
             <div class="row pb-3">
                 @foreach (var product in Model)
                 {
