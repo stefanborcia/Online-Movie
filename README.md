@@ -7,22 +7,20 @@ https://github.com/stefanborcia/Online-Movie/assets/98278002/9e65d1f1-c419-4ac0-
 
 
 
-
-
-
-</br>
 <hr/>
 
 
 ![update](https://github.com/stefanborcia/Online-Movie/assets/98278002/83717cb4-8adb-415c-88c6-02f2b764e792)
 
-</br>
 <hr/>
 
 ![delete](https://github.com/stefanborcia/Online-Movie/assets/98278002/ff5b2721-debf-4007-9f16-fd73b7982650)
 
-</br>
 <hr/>
 
-![card](https://github.com/stefanborcia/Online-Movie/assets/98278002/6a022ff8-0383-425d-a4a7-c7e595abd223)
+![products](https://github.com/stefanborcia/Online-Movie/assets/98278002/ec63f8b6-a925-4517-bef5-94cc29026a7d)
 
+
+<hr/>
+
+![details1](https://github.com/stefanborcia/Online-Movie/assets/98278002/379139f9-1b93-4d21-a7af-31b48ae0dbf6)
