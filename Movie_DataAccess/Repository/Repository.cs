@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -24,7 +25,7 @@ namespace Movie_DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public C Get(System.Linq.Expressions.Expression<Func<C, bool>> filter, string? includeProperties = null)
+        public C Get(Expression<Func<C, bool>> filter, string? includeProperties = null)
         {
             IQueryable<C> query = dbSet;
             query = query.Where(filter);
