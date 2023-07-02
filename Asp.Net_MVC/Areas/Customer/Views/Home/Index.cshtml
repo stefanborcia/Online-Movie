@@ -1,18 +1,18 @@
 ﻿@using System.Globalization
 @model IEnumerable<Product>
-<div class="container">
-    <div class="row shadow rounded ">
+<div class="container-fluid">
+    <div class="row shadow ">
         <div id="carouselExampleControls" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="carousel slide h-100 pt-1 pb-1" data-bs-ride="carousel">
-                <div class="carousel-inner h-100 w-100 mt-4">
+            <div class="carousel slide h-100 pb-1 pt-1 rounded" data-bs-ride="carousel">
+                <div class="carousel-inner h-100 w-100 rounded">
                     <div class="carousel-item active h-100">
-                        <img src="/images/carousel/ksaDjd.jpg" class="d-block w-100">
+                        <img src="/images/carousel/ksaDjd.jpg" class="d-block w-100 h-100">
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="/images/carousel/051750449035193.jpg" class="d-block w-100">
+                        <img src="/images/carousel/051750449035193.jpg" class="d-block w-100 h-100">
                     </div>
                     <div class="carousel-item h-100">
-                        <img src="images/carousel/p22557011_v_h8_ab.jpg" class="d-block w-100">
+                        <img src="images/carousel/p22557011_v_h8_ab.jpg" class="d-block w-100 h-100">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -25,8 +25,8 @@
                 </button>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 align-content-center mt-5 text-center">
-            <div class="mb-4 pt-2"><h2>The Best <span class="text-success fst-italic"> Movie's All Time</span></h2></div>
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 align-content-center text-center">
+            <div class="mb-4"><h2>The Best <span class="text-success fst-italic"> Movie's All Time</span></h2></div>
             <div class="mb-4"><span class="fst-italic fw-bolder">Unlimited movies, TV shows, and more</span></div>
             <div class="mb-4"><span class=" fst-italic fw-bolder">Watch now, cancel anytime.</span></div>
             <div class="mb-2"><span class="fst-italic fw-bolder">Enjoy on your TV</span></div>
@@ -40,7 +40,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="row p-2">
                             <div class="col-12 p-1 h-75">
-                                <div class="card border-0 p-3 shadow border-top border-5 rounded ">
+                                <div class="card border-0 p-1 shadow border-top border-5 rounded container-fluid">
                                     <img src="@product.ImageUrl" class="card-img-top rounded" />
                                     <div class="card-body pb-0">
                                         <div class="pl-1">
