@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @model IEnumerable<Product>
 <div class="container-fluid">
-    <div class="row shadow ">
+    <div class="row shadow rounded">
         <div id="carouselExampleControls" class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
             <div class="carousel slide h-100 pb-1 pt-1 rounded" data-bs-ride="carousel">
                 <div class="carousel-inner h-100 w-100 rounded">
@@ -25,14 +25,18 @@
                 </button>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 align-content-center text-center">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center pt-2">
             <div class="mb-4"><h2>The Best <span class="text-success fst-italic"> Movie's All Time</span></h2></div>
-            <div class="mb-4"><span class="fst-italic fw-bolder">Unlimited movies, TV shows, and more</span></div>
-            <div class="mb-4"><span class=" fst-italic fw-bolder">Watch now, cancel anytime.</span></div>
-            <div class="mb-2"><span class="fst-italic fw-bolder">Enjoy on your TV</span></div>
+            <div class="mb-4"><span class="fst-italic fw-bolder">Unlimited movies, TV shows, and much more...</span></div>
+            <div class="mb-4"><span class=" fst-italic fw-bolder">Start watching now, cancel anytime.</span></div>
+            <div class="mb-4"><span class="fst-italic fw-bolder">Enjoy on your device.</span></div>
+            <button type="submit"
+                    class="btn btn-primary bg-gradient w-25 py-2 text-uppercase fw-semibold">
+                Subscribe
+            </button>
         </div>
     </div>
-    <div class="row">
+    <div class="row mt-3">
         <div class="col-12 mb-6">
             <div class="row pb-3">
                 @foreach (var product in Model)
