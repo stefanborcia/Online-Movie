@@ -20,6 +20,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Movie_DataAccess\Movie_DataAccess.csproj" />
     <ProjectReference Include="..\Movie_Models\Movie_Models.csproj" />
+    <ProjectReference Include="..\Movie_Utility\Movie_Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
