@@ -1,9 +1,7 @@
 # Online-Movie
 
 
-
-
-https://github.com/stefanborcia/Online-Movie/assets/98278002/9e65d1f1-c419-4ac0-9a90-68dc4d51e448
+https://github.com/stefanborcia/Online-Movie/assets/98278002/0787990d-5871-466f-afaa-e401b13a9fa6
 
 
 
