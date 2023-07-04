@@ -1,0 +1,40 @@
+﻿@using System.Security.Cryptography
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+<div class="card shadow border-0 mt-3">
+    <div class="card-header bg-secondary bg-gradient py-1">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-primary">Company List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        <div class="row pb-2">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Company" asp-action="UpSert" class="btn btn-primary">
+                    <i class="bi bi-plus-square-dotted"></i>  Create New Company
+                </a>
+            </div>
+        </div>
+
+        <table id="myTable" class="table table-bordered table-striped" style="width: 100%">
+            <thead class="mt-5">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Phone Number</th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/company.js"></script>
+}
