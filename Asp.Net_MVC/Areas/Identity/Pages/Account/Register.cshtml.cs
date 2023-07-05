@@ -20,6 +20,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using Movie_DataAccess.Repository;
+using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
 using Movie_Utility;
 using static System.String;
@@ -35,6 +37,7 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<IdentityUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly IUnitOfWork _unitOfWork;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -42,8 +45,10 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
             IUserStore<IdentityUser> userStore,
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _roleManager = roleManager;
             _userManager = userManager;
             _userStore = userStore;
@@ -117,6 +122,9 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
             public string? State { get; set; }
             public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; }
+            public int? CompanyId { get; set; }
+            [ValidateNever]
+            public IEnumerable<SelectListItem> CompanyList { get; set; }
         }
 
 
@@ -136,7 +144,12 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
                 {
                     Text = s,
                     Value = s
-                })
+                }),
+                CompanyList = _unitOfWork.Company.GetAll().Select(s => new SelectListItem
+                {
+                    Text = s.Name,
+                    Value = s.Id.ToString()
+                }),
             };
 
             ReturnUrl = returnUrl;
