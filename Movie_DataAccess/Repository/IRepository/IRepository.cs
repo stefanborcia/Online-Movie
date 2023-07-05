@@ -11,7 +11,7 @@ namespace Movie_DataAccess.Repository.IRepository
     {
         // C => Category
         IEnumerable<C> GetAll(string? includeProperties = null);
-        C Get(Expression<Func<C, bool>> filter, string? includeProperties = null);
+        C Get(Expression<Func<C, bool>> filter, string? includeProperties = null, bool tracked=false);
         void Add(C entity);
         void Remove(C entity);
         void RemoveRange(IEnumerable<C> entity);

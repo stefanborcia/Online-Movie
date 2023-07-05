@@ -25,9 +25,18 @@ namespace Movie_DataAccess.Repository
             dbSet.Add(entity);
         }
 
-        public C Get(Expression<Func<C, bool>> filter, string? includeProperties = null)
+        public C Get(Expression<Func<C, bool>> filter, string? includeProperties = null, bool tracked = false)
         {
             IQueryable<C> query = dbSet;
+
+            if (tracked)
+            {
+                query = dbSet;
+            }
+            else
+            {
+                query = dbSet.AsNoTracking();
+            }
             query = query.Where(filter);
             if (!string.IsNullOrEmpty(includeProperties))
             {

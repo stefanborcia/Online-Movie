@@ -15,7 +15,7 @@ namespace Movie_Models
         [ForeignKey("ProductId")]
         [ValidateNever]
         public Product Product { get; set; }
-        public string Count { get; set;}
+        public int Count { get; set;}
         public string ApplicationUserId { get; set;}
         [ForeignKey("ApplicationsUserId")]
         [ValidateNever]
