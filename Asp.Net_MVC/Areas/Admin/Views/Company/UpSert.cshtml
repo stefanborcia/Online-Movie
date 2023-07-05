@@ -5,13 +5,13 @@
     <div class="card-header bg-secondary bg-gradient py-1">
         <div class="row">
             <div class="col-12 text-center">
-                <h2 class="text-primary">@(Model.Id != 0 ? "Update" : "Create") Company</h2>
+                <h2 class="text-primary">@(Model.CompanyId != 0 ? "Update" : "Create") Company</h2>
             </div>
         </div>
     </div>
     <div class="card-body p-4">
         <form method="post" class="row" enctype="multipart/form-data">
-            <input asp-for="Id" hidden />
+            <input asp-for="CompanyId" hidden />
             <div class="row">
                 <div class="col-12">
                     <div class="p-3">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="row">
                             <div class="col-6">
-                                @if (Model.Id != 0)
+                                @if (Model.CompanyId != 0)
                                 {
                                     <button type="submit" class="btn btn-primary form-control">Update</button>
                                 }

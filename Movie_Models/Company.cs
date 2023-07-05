@@ -9,7 +9,7 @@ namespace Movie_Models
 {
     public class Company
     {
-        public int Id { get; set; }
+        public int CompanyId { get; set; }
         [Required]
         public string Name { get; set; }
         public string? StreetAddress { get; set; }

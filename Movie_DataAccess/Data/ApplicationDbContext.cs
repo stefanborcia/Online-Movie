@@ -30,6 +30,12 @@ namespace Movie_DataAccess.Data
                 new Category { CategoryId = 5, Name = "Drama", DisplayOrder = 5 }
             );
 
+            modelBuilder.Entity<Company>().HasData(
+                new Company { CompanyId = 1, Name = "Universal Pictures", StreetAddress = "", City = "Universal City", PostalCode = "127458", State = "California", PhoneNumber = "+41 8579 2548"},
+                new Company { CompanyId = 2, Name = "Warner Bros", StreetAddress = "", City = "Burbank", PostalCode = "145976", State = "California", PhoneNumber = "+42 8557 6628 "},
+                new Company { CompanyId = 3, Name = "Lionsgate", StreetAddress = "", City = "Santa Monica", PostalCode = "157498", State = "California", PhoneNumber = "+41 2548 3657"}
+            );
+
             modelBuilder.Entity<Product>().HasData(
                 new Product
                 {
