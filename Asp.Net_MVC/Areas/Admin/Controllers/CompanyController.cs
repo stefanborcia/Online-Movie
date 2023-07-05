@@ -72,7 +72,7 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<Company> objCompanyList = _unitOfWork.Company.GetAll(includeProperties: "Category").ToList();
+            List<Company> objCompanyList = _unitOfWork.Company.GetAll().ToList();
             return Json(new { data = objCompanyList });
         }
         [HttpDelete]
