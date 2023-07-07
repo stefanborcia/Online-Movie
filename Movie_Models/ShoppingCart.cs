@@ -20,5 +20,8 @@ namespace Movie_Models
         [ForeignKey("ApplicationsUserId")]
         [ValidateNever]
         public ApplicationUser ApplicationUser { get; set; }
+
+        [NotMapped]
+        public double Price { get; set; }
     }
 }

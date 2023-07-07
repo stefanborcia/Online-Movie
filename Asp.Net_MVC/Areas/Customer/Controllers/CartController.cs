@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movie_DataAccess.Repository.IRepository;
+using Movie_Models;
 using Movie_Models.ViewModels;
 
 namespace Asp.Net_MVC.Areas.Customer.Controllers
@@ -12,6 +13,7 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         public ShoppingCartVM ShoppingCartVM { get; set; }
+
         public CartController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -24,9 +26,37 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
 
             ShoppingCartVM = new()
             {
-                ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId, includeProperties: "Product")
+                ShoppingCartList =
+                    _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId, includeProperties: "Product")
             };
+
+            foreach (var cart in ShoppingCartVM.ShoppingCartList)
+            {
+            cart.Price = GetPriceBasedOnQuantity(cart);
+                ShoppingCartVM.OrderTotal += (cart.Price * cart.Count);
+            }
             return View(ShoppingCartVM);
+        }
+
+        private double GetPriceBasedOnQuantity(ShoppingCart shoppingCart)
+        {
+            if (shoppingCart.Count <= 3)
+            {
+                return shoppingCart.Product.Price3;
+            }
+            else
+            {
+                if (shoppingCart.Count <= 5)
+                {
+                    return shoppingCart.Product.Price3;
+                }
+                else
+                {
+                    return shoppingCart.Product.Price5;
+                }
+            }
         }
     }
 }
+
+
