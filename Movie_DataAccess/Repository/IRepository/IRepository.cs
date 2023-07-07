@@ -10,7 +10,7 @@ namespace Movie_DataAccess.Repository.IRepository
     public interface IRepository<C> where C: class
     {
         // C => Category
-        IEnumerable<C> GetAll(string? includeProperties = null);
+        IEnumerable<C> GetAll(Expression<Func<C, bool>> filter=null, string? includeProperties = null);
         C Get(Expression<Func<C, bool>> filter, string? includeProperties = null, bool tracked=false);
         void Add(C entity);
         void Remove(C entity);

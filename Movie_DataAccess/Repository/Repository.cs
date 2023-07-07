@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Movie_DataAccess.Data;
 using Movie_DataAccess.Repository.IRepository;
@@ -48,9 +49,14 @@ namespace Movie_DataAccess.Repository
             return query.FirstOrDefault();
         }
 
-        public IEnumerable<C> GetAll(string? includeProperties = null)
+        public IEnumerable<C> GetAll(Expression<Func<C, bool>> filter, string? includeProperties = null)
         {
             IQueryable<C> query = dbSet;
+            if (filter != null)
+            {
+                query = query.Where(filter);
+            }
+
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var includeProp in includeProperties.Split(new char[]{ ',' }, StringSplitOptions.RemoveEmptyEntries))
