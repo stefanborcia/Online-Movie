@@ -57,14 +57,12 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
                 //add cart record
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
             }
+            _unitOfWork.Save();
 
             TempData["success"] = "Cart updated successfully";
 
-            _unitOfWork.Save();
-
             return RedirectToAction(nameof(Index));
         }
-
 
         public IActionResult Privacy()
         {

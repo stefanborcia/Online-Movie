@@ -1,7 +1,7 @@
 ﻿@using System.Globalization
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @model ShoppingCart
-<form method="post" action="Details">
+<form method="post" asp-action="Details">
     <input hidden asp-for="ProductId"/>
     <div class="card shadow border-0 mt-4">
         <div class="card-header bg-secondary bg-gradient text-light py-4">

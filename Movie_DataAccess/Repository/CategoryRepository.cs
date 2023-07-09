@@ -10,13 +10,18 @@ using Movie_Models;
 
 namespace Movie_DataAccess.Repository
 {
-    public class ApplicationUserRepository : Repository<ApplicationUser>, IApplicationUserRepository
+    public class CategoryRepository : Repository<Category>, ICategoryRepository
     {
         private ApplicationDbContext _db;
 
-        public ApplicationUserRepository(ApplicationDbContext db) : base(db)
+        public CategoryRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
+        }
+
+        public void Update(Category obj)
+        {
+            _db.Categories.Update(obj);
         }
     }
 }
