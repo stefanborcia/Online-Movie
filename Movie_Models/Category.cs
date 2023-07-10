@@ -5,7 +5,7 @@ namespace Movie_Models
 {
     public class Category
     {
-        //[Key]
+        [Key]
         public int CategoryId { get; set; }
         [Required]
         [MaxLength(30)]

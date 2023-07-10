@@ -40,8 +40,8 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
         [Authorize]
         public IActionResult Details(ShoppingCart shoppingCart)
         {
-            var claimsIdentity = (ClaimsIdentity)User.Identity;
-            var userId=claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var claimsIdentity = (ClaimsIdentity)User.Identity!;
+            var userId=claimsIdentity.FindFirst(ClaimTypes.NameIdentifier)!.Value;
             shoppingCart.ApplicationUserId = userId;
 
             ShoppingCart cartFromDb = _unitOfWork.ShoppingCart.Get(u =>
@@ -55,6 +55,7 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
             else
             {
                 //add cart record
+                shoppingCart.Id = 0;
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
             }
             _unitOfWork.Save();

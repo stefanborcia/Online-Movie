@@ -12,7 +12,7 @@ namespace Movie_Models
 {
     public class Product
     {
-        //[Key]
+        [Key]
         public int ProductId { get; set; }
         [Required]
         public string? Title{ get; set; }
