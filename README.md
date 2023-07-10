@@ -28,3 +28,6 @@ https://github.com/stefanborcia/Online-Movie/assets/98278002/0787990d-5871-466f-
 
 
 ![register](https://github.com/stefanborcia/Online-Movie/assets/98278002/cfc29369-b469-4efc-86a7-a56464844cf1)
+<hr/>
+
+![image](https://github.com/stefanborcia/Online-Movie/assets/98278002/15de583a-d2b8-49e2-b2f7-a67d64583273)
