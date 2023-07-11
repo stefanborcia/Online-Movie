@@ -166,7 +166,7 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
-                user.StreetAdress = Input.StreetAddress;
+                user.StreetAddress = Input.StreetAddress;
                 user.City = Input.City;
                 user.Name = Input.Name;
                 user.PostalCode = Input.PostalCode;
