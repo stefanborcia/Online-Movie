@@ -31,3 +31,8 @@ https://github.com/stefanborcia/Online-Movie/assets/98278002/0787990d-5871-466f-
 <hr/>
 
 ![image](https://github.com/stefanborcia/Online-Movie/assets/98278002/15de583a-d2b8-49e2-b2f7-a67d64583273)
+
+<hr/>
+
+![image](https://github.com/stefanborcia/Online-Movie/assets/98278002/9f0c1d88-3a72-4cf7-a1c1-540b3d243689)
+
