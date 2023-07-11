@@ -1,4 +1,6 @@
-﻿@model ShoppingCartVM
+﻿@using System.Globalization
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model ShoppingCartVM
 
 <form method="post">
 	<br />
@@ -8,7 +10,7 @@
 			<div class="card-header bg-secondary bg-gradient text-light ml-0 py-4">
 				<div class="row px-4">
 					<div class="col-6">
-						<h5 class="pt-2 text-white">
+						<h5 class="pt-2 text-warning">
 							Shopping Cart
 						</h5>
 					</div>
@@ -23,7 +25,7 @@
 						<div class="col-12 col-lg-6 pb-4">
 							<div class="row">
 								<h4 class="d-flex justify-content-between align-items-center mb-3">
-									<span class="text-info">Shipping Details:</span>
+									<span class="text-warning">Shipping Details:</span>
 								</h4>
 							</div>
 							<div class="row my-1">
@@ -83,23 +85,24 @@
 						</div>
 						<div class="col-12 col-lg-5 offset-lg-1">
 							<h4 class="d-flex justify-content-between align-items-center mb-3">
-								<span class="text-info">Order Summary:</span>
+								<span class="text-warning">Order Summary:</span>
 							</h4>
-							<ul class="list-group mb-3">
-								<li class="list-group-item d-flex justify-content-between">
-									<div>
-										<h6 class="my-0">Title</h6>
-										<small class="text-muted">Quantity: Count</small>
-									</div>
-									<span class="text-muted">Price * Count </span>
-								</li>
-
-
-								<li class="list-group-item d-flex justify-content-between bg-light">
-									<small class="text-info">Total (EUR)</small>
-									<strong class="text-info">€</strong>
-								</li>
-							</ul>
+                            <ul class="list-group mb-3">
+								@foreach (var details in Model.ShoppingCartList)
+								{
+								    <li class="list-group-item d-flex justify-content-between">
+                                        <div>
+                                            <h6 class="my-0">@details.Product.Title</h6>
+                                            <small class="text-muted">Quantity: Count</small>
+                                        </div>
+										<span class="text-muted">@((details.Price * details.Count).ToString("C", new CultureInfo("fr-FR"))) </span>
+                                    </li>
+								}
+                                <li class="list-group-item d-flex justify-content-between bg-light">
+                                    <small class="text-info">Total (EUR)</small>
+									<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("C", new CultureInfo("fr-FR"))</strong>
+                                </li>
+                            </ul>
 						</div>
 					</div>
 				</div>
@@ -108,7 +111,7 @@
 				<div class="row">
 					<div class="col-12 col-md-8 pt-2">
 						<p style="color:maroon; font-size:14px;">Estimate Arrival Date:
-							
+							@DateTime.Now.AddDays(7).ToShortDateString() - @DateTime.Now.AddDays(14).ToShortDateString()
 						</p>
 					</div>
 					<div class="col-12 col-md-4">
