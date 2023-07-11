@@ -14,7 +14,8 @@ namespace Movie_DataAccess.Repository.IRepository
         ICompanyRepository Company { get; }
         IShoppingCartRepository ShoppingCart { get; }
         IApplicationUserRepository ApplicationUser { get; }
-
+        IOrderHeaderRepository OrderHeader { get; }
+        IOrderDetailRepository OrderHeader { get; }
         void Save();
     }
 }
