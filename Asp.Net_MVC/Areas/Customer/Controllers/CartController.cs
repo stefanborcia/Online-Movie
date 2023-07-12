@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
 using Movie_Models.ViewModels;
+using Movie_Utility;
 
 namespace Asp.Net_MVC.Areas.Customer.Controllers
 {
@@ -12,6 +13,7 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
     public class CartController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        [BindProperty]
         public ShoppingCartVM ShoppingCartVM { get; set; }
 
         public CartController(IUnitOfWork unitOfWork)
@@ -69,6 +71,58 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
             }
             return View(ShoppingCartVM);
         }
+
+        [HttpPost]
+        [ActionName("Summary")]
+        public IActionResult SummaryPost()
+        {
+	        var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            ShoppingCartVM.ShoppingCartList =
+	            _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId, includeProperties: "Product");
+
+            ShoppingCartVM.OrderHeader.OrderDate= DateTime.Now;
+            ShoppingCartVM.OrderHeader.ApplicationUserId = userId;
+
+            ShoppingCartVM.OrderHeader.ApplicationUser = _unitOfWork.ApplicationUser.Get(u => u.Id == userId);
+
+            foreach (var cart in ShoppingCartVM.ShoppingCartList)
+            {
+	            cart.Price = GetPriceBasedOnQuantity(cart);
+	            ShoppingCartVM.OrderHeader.OrderTotal += (cart.Price * cart.Count);
+            }
+
+            if (ShoppingCartVM.OrderHeader.ApplicationUser.CompanyId.GetValueOrDefault() == 0)
+            {
+                //for regular customer account capture payment
+                ShoppingCartVM.OrderHeader.PaymentStatus = StaticDetails.PaymentStatusPending;
+                ShoppingCartVM.OrderHeader.OrderStatus=StaticDetails.StatusPending;
+            }
+            else
+            {
+                //for a company user
+                ShoppingCartVM.OrderHeader.PaymentStatus = StaticDetails.PaymentStatusDelayedPayment;
+                ShoppingCartVM.OrderHeader.OrderStatus = StaticDetails.StatusApproved;
+            }
+
+            _unitOfWork.OrderHeader.Add(ShoppingCartVM.OrderHeader);
+            _unitOfWork.Save();
+
+            foreach (var cart in ShoppingCartVM.ShoppingCartList)
+            {
+	            OrderDetail orderDetail = new()
+	            {
+		            ProductId = cart.ProductId,
+		            OrderHeaderId = ShoppingCartVM.OrderHeader.Id,
+		            Price = cart.Price,
+		            Count = cart.Count
+	            };
+                _unitOfWork.OrderDetail.Add(orderDetail);
+                _unitOfWork.Save();
+            }
+            return View(ShoppingCartVM);
+		}
 
         public IActionResult Plus(int cartId)
         {
