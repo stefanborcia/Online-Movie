@@ -5,6 +5,7 @@ using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
 using Movie_Models.ViewModels;
 using Movie_Utility;
+using Stripe.Checkout;
 
 namespace Asp.Net_MVC.Areas.Customer.Controllers
 {
@@ -124,7 +125,42 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
 
             if (applicationUser.CompanyId.GetValueOrDefault() == 0)
             {
-                //stripe logic for a regular customer
+				//stripe logic for a regular customer
+				var domain = "https://localhost:7270/";
+				var options = new SessionCreateOptions
+				{
+					SuccessUrl = domain+$"customer/cart/OrderConfirmation?id{ShoppingCartVM.OrderHeader.Id}",
+                    CancelUrl = domain+"customer/cart/index",
+					LineItems = new List<SessionLineItemOptions>(),
+					Mode = "payment",
+				};
+
+				foreach (var item in ShoppingCartVM.ShoppingCartList)
+				{
+					var sessionLineItem = new SessionLineItemOptions
+					{
+						PriceData = new SessionLineItemPriceDataOptions()
+						{
+							UnitAmount = (long)(item.Price * 100), //10.50 => 1050
+							Currency = "eur",
+							ProductData = new SessionLineItemPriceDataProductDataOptions()
+							{
+								Name = item.Product.Title
+							}
+						},
+						Quantity = item.Count
+					};
+                    options.LineItems.Add(sessionLineItem);
+				}
+
+				var service = new SessionService();
+				Session session =service.Create(options);
+
+                _unitOfWork.OrderHeader.UpdateStripePaymentID(ShoppingCartVM.OrderHeader.Id,session.Id,session.PaymentIntentId);
+                _unitOfWork.Save();
+
+                Response.Headers.Add("Location", session.Url);
+                return new StatusCodeResult(303);
             }
             return RedirectToAction(nameof(OrderConfirmation), new {id=ShoppingCartVM.OrderHeader.Id});
 		}
