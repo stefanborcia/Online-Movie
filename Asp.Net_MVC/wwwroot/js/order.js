@@ -1,23 +1,29 @@
 ﻿var dataTable;
+
 $(document).ready(function () {
     var url = window.location.search;
-    if (url.include("inprocess")) {
+    if (url.includes("inprocess")) {
         loadDataTable("inprocess");
-    } else {
-        if (url.include("completed")) {
+    }
+    else {
+        if (url.includes("completed")) {
             loadDataTable("completed");
-        } else {
-            if (url.include("pending")) {
+        }
+        else {
+            if (url.includes("pending")) {
                 loadDataTable("pending");
-            } else {
-                if (url.include("approved")) {
+            }
+            else {
+                if (url.includes("approved")) {
                     loadDataTable("approved");
-                } else {
+                }
+                else {
                     loadDataTable("all");
                 }
             }
         }
     }
+
 });
 
 
@@ -33,13 +39,13 @@ function loadDataTable(status) {
                 { data: "orderStatus", "width": "15%" },
                 { data: "orderTotal", "width": "15%" },
                 {
-                    data: "productId",
+                    data: "id",
                     "render": function (data) {
                         return `<div class="w-100 btn-group" role="group">
                                    <a href="/Admin/Order/Details?orderId=${data}" class="btn btn-primary mx-2"><i class="bi bi-pencil-square"></i></a>
                                 </div>`;
                     },
-                    "width": "25%"
+                    "width": "10%"
                 }
             ]
     });

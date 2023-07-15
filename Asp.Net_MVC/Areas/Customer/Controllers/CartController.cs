@@ -129,7 +129,7 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
 				var domain = "https://localhost:7270/";
 				var options = new SessionCreateOptions
 				{
-					SuccessUrl = domain+$"customer/cart/OrderConfirmation?id{ShoppingCartVM.OrderHeader.Id}",
+					SuccessUrl = domain+$"customer/cart/OrderConfirmation?id={ShoppingCartVM.OrderHeader.Id}",
                     CancelUrl = domain+"customer/cart/index",
 					LineItems = new List<SessionLineItemOptions>(),
 					Mode = "payment",
@@ -168,6 +168,7 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
         public IActionResult OrderConfirmation(int id)
         {
 	        OrderHeader orderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == id, includeProperties: "ApplicationUser");
+
 	        if (orderHeader.PaymentStatus != StaticDetails.PaymentStatusDelayedPayment)
 	        {
 		        var service = new SessionService();
