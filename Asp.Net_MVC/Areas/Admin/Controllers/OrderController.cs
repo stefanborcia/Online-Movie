@@ -4,7 +4,9 @@ using Movie_DataAccess.Repository;
 using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
 using System.Diagnostics;
+using Movie_Models.ViewModels;
 using Movie_Utility;
+using NuGet.ProjectModel;
 
 namespace Asp.Net_MVC.Areas.Admin.Controllers
 {
@@ -21,6 +23,17 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
 		public IActionResult Index()
 		{
 			return View();
+		}
+
+        public IActionResult Details(int orderId)
+        {
+            OrderVM orderVM = new()
+            {
+                OrderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == orderId, includeProperties: "ApplicationUser"),
+                OrderDetail =
+                    _unitOfWork.OrderDetail.GetAll(u => u.OrderHeaderId == orderId, includeProperties: "Product")
+            };
+            return View(orderVM);
 		}
 
 
