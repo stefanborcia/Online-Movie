@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Movie_Models.ViewModels;
 using Movie_Utility;
 using NuGet.ProjectModel;
+using Stripe;
 
 namespace Asp.Net_MVC.Areas.Admin.Controllers
 {
@@ -104,9 +105,38 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
             return RedirectToAction(nameof(Details), new { orderId = OrderVM.OrderHeader.Id });
         }
 
+        [HttpPost]
+        [Authorize(Roles = StaticDetails.Role_Admin + "," + StaticDetails.Role_Employee)]
+        public IActionResult CancelOrder()
+        {
+            var orderHeader = _unitOfWork.OrderHeader.Get(u => u.Id == OrderVM.OrderHeader.Id);
+
+            if (orderHeader.PaymentStatus == StaticDetails.PaymentStatusDelayedPayment)
+            {
+                var options = new RefundCreateOptions
+                {
+                    Reason = RefundReasons.RequestedByCustomer,
+                    PaymentIntent = orderHeader.PaymentIntentId
+                };
+                var service = new RefundService();
+                Refund refund = service.Create(options);
+
+                _unitOfWork.OrderHeader.UpdateStatus(orderHeader.Id,StaticDetails.StatusCancelled,StaticDetails.StatusRefunded);
+            }
+            else
+            {
+                _unitOfWork.OrderHeader.UpdateStatus(orderHeader.Id,StaticDetails.StatusCancelled,StaticDetails.StatusCancelled);
+            }
+            _unitOfWork.Save();
+
+            TempData["Success"] = "Order Cancelled Successfully.";
+
+            return RedirectToAction(nameof(Details), new { orderId = OrderVM.OrderHeader.Id });
+        }
+
         #region API CALLS
 
-		[HttpGet]
+            [HttpGet]
 		public IActionResult GetAll(string status)
         {
             IEnumerable<OrderHeader> objOrderHeaders;
