@@ -26,6 +26,7 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
+            HttpContext.Session.Clear(); //show 0 items in shoppingCart if is logout
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {
