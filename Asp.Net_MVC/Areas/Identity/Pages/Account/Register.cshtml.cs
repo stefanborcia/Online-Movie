@@ -24,6 +24,7 @@ using Movie_DataAccess.Repository;
 using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
 using Movie_Utility;
+using Stripe.Treasury;
 using static System.String;
 
 namespace Asp.Net_MVC.Areas.Identity.Pages.Account
@@ -170,12 +171,12 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
                 user.City = Input.City;
                 user.Name = Input.Name;
                 user.PostalCode = Input.PostalCode;
-                user.State=Input.State;
-                user.PhoneNumber=Input.PhoneNumber;
+                user.State = Input.State;
+                user.PhoneNumber = Input.PhoneNumber;
 
                 if (Input.Role == StaticDetails.Role_Company)
                 {
-                    user.CompanyId=Input.CompanyId;
+                    user.CompanyId = Input.CompanyId;
                 }
 
                 var result = await _userManager.CreateAsync(user, Input.Password);
@@ -211,7 +212,14 @@ namespace Asp.Net_MVC.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        if (User.IsInRole(StaticDetails.Role_Admin))
+                        {
+                            TempData["success"] = "New User Created Successfully";
+                        }
+                        else
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                        }
                         return LocalRedirect(returnUrl);
                     }
                 }
