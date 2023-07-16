@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Movie_DataAccess.Repository.IRepository;
 using Movie_Models;
+using Movie_Utility;
 
 namespace Asp.Net_MVC.Areas.Customer.Controllers
 {
@@ -51,14 +52,18 @@ namespace Asp.Net_MVC.Areas.Customer.Controllers
                 //shopping cart exists
                 cartFromDb.Count += shoppingCart.Count;
                 _unitOfWork.ShoppingCart.Update(cartFromDb);
+                _unitOfWork.Save();
             }
             else
             {
                 //add cart record
                 shoppingCart.Id = 0;
                 _unitOfWork.ShoppingCart.Add(shoppingCart);
+                _unitOfWork.Save();
+                //display count in shoppingCart
+                HttpContext.Session.SetInt32(StaticDetails.SessionCart, _unitOfWork.ShoppingCart.Get(u =>
+                    u.ApplicationUserId == userId).Count);
             }
-            _unitOfWork.Save();
 
             TempData["success"] = "Cart updated successfully";
 
