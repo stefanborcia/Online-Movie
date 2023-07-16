@@ -1,24 +1,46 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
+
 #carouselExampleControls {
     height: 400px;
 }
+
 .dishCard {
     height: 250px;
 }
+.hr-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+    .hr-text::before,
+    .hr-text::after {
+        content: '';
+        flex: 1;
+        border-bottom: 1px solid #000;
+    }
+
+.hr-text:not(:empty)::before {
+        margin-right: .25em;
+    }
+
+.hr-text:not(:empty)::after {
+        margin-left: .25em;
+    }
