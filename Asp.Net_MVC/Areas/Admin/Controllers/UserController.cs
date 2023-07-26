@@ -13,10 +13,10 @@ namespace Asp.Net_MVC.Areas.Admin.Controllers
     [Area("Admin")]
     [Authorize(Roles = StaticDetails.Role_Admin)]
 
-    public class UserController : Controller
+    public class CompanyController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public UserController(IUnitOfWork unitOfWork)
+        public CompanyController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
