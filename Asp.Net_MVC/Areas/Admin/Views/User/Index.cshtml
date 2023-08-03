@@ -1,0 +1,31 @@
+﻿@using System.Security.Cryptography
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+<div class="card shadow border-0 mt-3">
+    <div class="card-header bg-secondary bg-gradient py-1">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-primary">User List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        <table id="myTable" class="table table-bordered table-striped" style="width: 100%">
+            <thead class="mt-5">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Company</th>
+                <th>Role</th>
+                <th></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/js/user.js"></script>
+}
