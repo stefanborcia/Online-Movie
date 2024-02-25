@@ -1,14 +1,6 @@
 # Online-Movie
 
-
-<hr/>
-<a href="https://youtu.be/kAgEo5DFsQ8" title="E-commerce Movie Online">
-  <p align="center">
-    <img width="75%" src="https://img.youtube.com/vi/kAgEo5DFsQ8/maxresdefault.jpg" alt="E-commerce Movie Online"/>
-  </p>
-
-
-
+CLich here for the video :  https://www.youtube.com/watch?v=kAgEo5DFsQ8
 
 <hr/>
 
